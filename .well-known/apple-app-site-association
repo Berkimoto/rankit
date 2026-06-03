@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "7AHA377A56.com.laineberksoy.rankit",
+        "paths": ["/rankit/join/*"]
+      }
+    ]
+  }
+}
