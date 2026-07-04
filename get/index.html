@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>RankIt — Download</title>
+<meta name="description" content="RankIt — rank the Top 5 live against your friends. Download on the App Store or Google Play.">
+<style>
+  :root { --bg:#F5F6F8; --dark:#2E3440; --gold:#F5C200; --text:#1A1E2E; --muted:#3E4458; --border:#C5C9D6; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { background:#F5F6F8; }
+  body {
+    background:#F5F6F8; background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    min-height:100vh;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    text-align:center; padding:24px; gap:14px;
+  }
+  .logo { font-size:46px; font-weight:800; letter-spacing:-1px; color:var(--dark); }
+  .logo span { color:var(--gold); }
+  .tagline { color:var(--muted); font-size:17px; max-width:300px; line-height:1.4; }
+  .redirect-note { color:var(--muted); font-size:14px; min-height:20px; margin-top:6px; font-weight:600; }
+  .buttons { display:flex; flex-direction:column; gap:12px; margin-top:18px; width:100%; max-width:300px; }
+  .btn {
+    display:block; padding:16px 20px; border-radius:14px;
+    font-size:17px; font-weight:700; text-decoration:none;
+    background:var(--gold); color:#1A1E2E;
+    box-shadow:0 2px 8px rgba(46,52,64,0.12);
+  }
+  .btn.secondary { background:#FFFFFF; color:var(--dark); border:1.5px solid var(--border); box-shadow:none; }
+</style>
+</head>
+<body>
+  <div class="logo">Rank<span>it!</span></div>
+  <p class="tagline">Rank the Top 5 — live against your friends 🏆</p>
+  <p class="redirect-note" id="note"></p>
+  <div class="buttons">
+    <a class="btn" id="ios" href="https://apps.apple.com/app/id6767127584">Download on the App&nbsp;Store</a>
+    <a class="btn" id="android" href="https://play.google.com/store/apps/details?id=com.laineberksoy.rankit">Get it on Google&nbsp;Play</a>
+  </div>
+  <script>
+    (function () {
+      var ua = navigator.userAgent || "";
+      var isIOS = /iPhone|iPad|iPod/i.test(ua);
+      var isAndroid = /Android/i.test(ua);
+      var target = null;
+
+      if (isIOS) {
+        target = document.getElementById("ios").href;
+        document.getElementById("android").className = "btn secondary";
+      } else if (isAndroid) {
+        target = document.getElementById("android").href;
+        document.getElementById("ios").className = "btn secondary";
+        var b = document.querySelector(".buttons");
+        b.insertBefore(document.getElementById("android"), document.getElementById("ios"));
+      }
+
+      if (target) {
+        document.getElementById("note").textContent = "Taking you to your store…";
+        window.location.replace(target);
+      }
+    })();
+  </script>
+</body>
+</html>
